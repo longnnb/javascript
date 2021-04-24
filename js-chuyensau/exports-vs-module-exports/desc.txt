@@ -1,0 +1,46 @@
+1. De ho tro viec object hoa cac file javascript, node js ho tro
+ - require
+ - module.exports
+ - exports
+
+Bat ki 1 file js nao duoc sinh ra se co cau truc
+
+var module = { exports: {} };
+var exports = module.exports;
+
+  // your code combile
+
+return module.exports;
+
+* cau lenh return module.exports se duoc thuc khi khi su dung require
+	( return module.exports o cuoi se duoc goi khi require() duoc goi.)
+	
+2. Cau hoi da co module.exports vi sao phai co exports
+- exports va module.exports deu tro den 1 vung nho
+- exports chi reference den vung nho cua module.exports
+- khi exports thay doi se tao ra vung nho moi chu k the thay doi duoc vung nho cua module.exports
+
+VD : exports.name = "hello" => Vùng nhớ A sẽ có thêm một biến name = "hello"
+		-> luc nay ca exports va module.exports deu tro den vung nho A chua gia tri name
+	
+	- neu k add them thanh phan nao ma gan export = bien khac
+		->  luc nay exports se tro den vung nho #
+		-> ket qua nhan duoc khi require se ko co thanh phan ma export da gan =
+	
+	VD :
+	var name = "V";
+    var getName = function(){
+      return name
+    }
+    exports = name;
+    module.exports.getName = getName;	
+	
+	=> ket qua nhan duoc chi la ham getName
+		exports da tro den vung nho # (name = "V") ko lien quan den module.exports
+
+3.
+Ket Luan
+module.exports.g = ...  // Ok
+exports.g = ...         // Ok
+module.exports = ...    // Ok
+exports = ...			// Not Ok

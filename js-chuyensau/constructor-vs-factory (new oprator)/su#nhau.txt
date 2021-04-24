@@ -1,0 +1,110 @@
+VD  ve su # nhau giua 2 kieu function
+
+1.
+// factory function
+function person(firstName, lastName, age) {
+  const person = {};
+  person.firstName = firstName;
+  person.lastName = lastName;
+  person.age = age;
+  return person;
+}
+// su dung tu khoa new doi voi factory
+const mike = new person('mike', 'grand' 23);
+
+* ta su console va so sanh
+mike.__proto__ === person.prototype 
+	-> false
+mike.__proto__ === Function.prototype 
+	-> false
+mike.__proto__ === Object.prototype 
+	-> true
+	
+==> ko phai la prototype cua person
+	no la prototype cua doi tuong Object
+
+2.
+Doi voi constructor
+
+function Person(firstName, lastName, age) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+}
+const mike = new Person('mike', 'grand', 23);
+mike.__proto__ === person.prototype 
+	-> true
+mike.__proto__ === Object.prototype 
+	-> true
+	
+* Dua vao 2 vi du tren
+==> __proto__ khi new factory se tro den Object.prototype
+	__proto__ khi new constructor se tro den prototype cua function Person
+	
+3. Nguyen nhan
+
+khi chay js Engine se thuc thi sau : 
+function Person(firstName, lastName, age) {
+    // this = {};
+    // this.__proto__ = Person.prototype;    
+    // Cài đặt logic:
+    // Nếu trong hàm có lệnh return
+    // về bất kỳ thứ gì mà không phải
+    // object, array hoặc hàmL
+    //     return this (đối tượng mới đã được tạo)
+    //     thay vì các mục trong 
+    //     biểu thức return;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;    
+    // return this;
+}
+- Doi voi constructor function
+	+ Javascript Engine 
+		a. khởi tạo một đối tượng và gắn vào từ khóa this.
+		b. Đặt thuộc tính nội bộ prototype của đối tượng, __proto__ là prototype của constructor function.
+		c. ặt logic rằng nếu như có một biến bất kỳ kiểu gì ngoại trừ array, 
+		object và function được trả về trong code của hàm constructor, 
+		trả về this (đối tượng mới được xây dựng — construct) 
+		thay vì trả về những gì trong cú pháp return của hàm.
+		d.cuối hàm, trả về this nếu như hàm không trả về gì cả.
+		
+- Doi voi factory function		
+function person(firstName, lastName, age) {    
+    // this = {};
+    // this.__proto__ = Person.prototype; 
+ 
+    // Cài đặt logic:
+    // Nếu trong hàm có lệnh return
+    // về bất kỳ thứ gì mà không phải
+    // object, array hoặc hàmL
+    //     return this (đối tượng mới đã được tạo)
+    //     thay vì các mục trong 
+    //     biểu thức return;
+	
+    const person = {};
+    person.firstName = firstName;
+    person.lastName = lastName;
+    person.age = age;
+    return person;    
+    // return this;
+}
+Vi factory ko su dung this nen dau ra van khong thay doi
+	-> proto cua no van la object, ko phai la proto Person
+	
+	
+function person(firstName, lastName, age) {
+  const person = {};
+  person.firstName = firstName;
+  person.lastName = lastName;
+  person.age = age;
+  return person;
+}
+const test = new person('mike', 'grand' 23);
+
+function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;    
+}
+		

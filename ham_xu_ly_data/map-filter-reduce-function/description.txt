@@ -1,0 +1,93 @@
+I .map
+Nếu có 1 mảng và muốn xử lý từng biến trong mảng theo cùng 1 cách, trả về các giá trị sau xử lý 
+(số lượng đúng bằng số lượng phần tử ban đầu của mảng) 
+
+==>thì tôi sẽ sử dụng map.
+
+vd : 
+const animals = [
+    {
+        "name": "cat",
+        "size": "small",
+        "weight": 5
+    },
+    {
+        "name": "dog",
+        "size": "small",
+        "weight": 10
+    },
+	 {
+        "name": "lion",
+        "size": "medium",
+        "weight": 150
+    },
+    {
+        "name": "elephant",
+        "size": "big",
+        "weight": 5000
+    }
+]
+
+- muon get tat ca name : 
+// ko dung map 
+let animal_names = [];
+for (let i = 0; i < animals.length; i++) {
+    animal_names.push(animals[i].name);
+}
+
+// dung map
+let animal_names = animals.map((animal, index, animals) => {
+    return animal.name
+})
+* map truyen vao 3 tham so
+ - phan tu hien tai
+ - chi so cua phan tu hien tai
+ - mang ban dau
+ 
+II. filter (loc mang theo yeu cau)
+Nếu đã có 1 mảng nhưng chỉ muốn lấy các phần tử theo 1 tiêu chuẩn nhất định, tôi sử dụng filter.
+* y/c : chi tra ve mang chua nhung con vat nho
+// ko filter
+let small_animals = [];
+
+for (let i = 0; i < animals.length; i ++) {
+    if (animals[i].size === "small") {
+        small_animals.push(animals[i])
+    }
+}
+//filter
+let small_animals = animals.filter((animal) => {
+    return animal.size === "small"
+})
+Hàm filter cũng nhận vào 3 tham số như hàm map(), 
+tuy nhiên trong trường hợp này ta chỉ sử dụng tham số đầu tiên.
+Nó cũng có các lợi ích như hàm map(),
+cũng sử dụng câu lệnh return trong thân hàm. 
+Tuy nhiên, với filter(), 
+	=> ta cần đảm bảo câu lệnh return trả về true hoặc false vì nó là điều kiện để "lọc" ra các giá trị phù hợp
+
+III  Nếu đã có 1 mảng nhưng muốn sử dụng các giá trị trong mảng để tạo ra vài thứ khác hoàn toàn mới,
+	=> sử dụng reduce.
+* y/c :  bạn cần tính tổng trọng lượng của các con vật. 
+// no reducer
+let total_weight = 0;
+for (let i = 0; i < animals.length; i++) {
+    total_weigth += animals[i].weight
+}
+
+// reducer
+let total_weight = animals.reduce((weight, animal, index, animals) => {
+    return weight += animal.weight
+}, 0)
+
+Tham số đầu tiên là giá trị khởi tạo. 
+Ta cần set giá trị khởi tạo ở cuối hàm. 
+Trong ví dụ trên là 0. Nó có thể là bất cứ giá trị nào.
+Tham số thứ 2 là phần tử hiện tại trong mảng.
+Tham số thứ 3 và 4 giống với 2 hàm kể trên.
+==>  những lợi ích khi sử dụng reduce() cũng tương tự như map(),filter()
+	làm cho code ngắn hơn, dễ đọc hơn. 
+Lần này, hàm reduce() trả về giá trị weight sau khi cộng, 
+thứ sẽ lại trở thành tham số đầu tiên cho hàm reduce() kế tiếp. 
+Khi chạy đến hàm reduce() với giá trị cuối cùng trong mảng, nó sẽ trả về tổng khối lượng các con vật (giá trị weight cuối cùng) 
+==>  gán vào biến total_weight.

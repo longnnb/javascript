@@ -1,0 +1,39 @@
+1. cac tao object trong js
+vd cach tao object : 
+- let x = {} // cach thong thuong hay dung
+- let x = new Object(); // khuyen ko nen dung
+- let y = Object.create(x) ; // tao objet y giong object x
+
+=====================
+-class-based
+-constructor  function
+-factoryfunction
+
+I. Constructor function
+
+- la function thong thuong va duoc khuyen chu cai dau tien viet hoa
+- duoc goi qua tu khoa new de tao object moi (ko return nhu factory function)
+- co the gan prototype vao 
+	vd : function Test() {}
+		Test.prototype.a = function() {}
+- tu khoa new co the truy cap vao cac prototype duoc gan.
+
+I. Factory function
+- khong su dung new de tao object moi
+- dua tren closure va higer order function
+ co nghia : 
+	+ truyen 1 tham so vao ham la ham #
+	+ return ham va co the return long nhieu ham voi nhau
+- ko su dung con tro this	
+vd : 
+function factory () {
+	function ten() {
+	}
+	function tuoi() {
+	}
+	// factory function co the return 1 object
+	return {
+		ten : ten,
+		tuoi : tuoi
+	}
+}

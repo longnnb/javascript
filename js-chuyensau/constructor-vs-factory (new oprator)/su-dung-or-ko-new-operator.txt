@@ -1,0 +1,28 @@
+1. TH ko su dung new trong javascript
+VD 
+function Person(firstName, lastName, age) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+}
+const mike = new Person('mike', 'grand', 23);
+const bob = Person('bob','grand',21);
+
+* Doi voi su dung new thi ket qua b thuong
+* KO su dung new
+ - console.log(bob) -> undefined
+ - window.firstName = 'bob'
+ - window.lastName = 'grand'
+ - window.firstName = 21
+ 
+ nguyen nhan khi khong su dung new: 
+ - cac thuoc tinh truyen vao se duoc gan cho doi tuong window
+	vi tai thoi diem nay this trong Person se tham chieu global object
+	hay noi cach # la window.object
+	
+ *  neu co new thi JS engine se tham chieu den doi tuong Person duoc khoi tao 
+	va cac thuoc tinh trong constructor function duoc gan cho mike
+ * neu ko new thi JS engine se xem day la ham thong thuong va ko return ve doi tuong nao 
+	chi tra ve undefined
+
+	

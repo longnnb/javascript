@@ -1,0 +1,18 @@
+1. callback
+- Doi voi HOF la function 
+	+ co the nhan vao parameter la 1 function #
+	+ co the return mot ham # hoac nhieu ham #
+* 1 ham duoc truyen vao ham # nhu 1 tham so (# so voi higer order function)
+Muc dich : ho tro xu ly bat dong bo trong js
+-> vd  muon ham a xu ly xong moi toi ham b xu ly
+nhung js chay bat dong bo nen su dung callback 
+------------------------------------------------------------------------------
+2.- Cau hoi : js chay dong bo hay bat dong bo
+T/loi : js chay ca 2 , co the chay single thread va non-blocking
+
+Doi voi tac vu nang, de ko bi block request
+-> js xu dung cac moi truong cua browser, Node js 
+
+* -> callback xuat hien giup code bat dong bo
+	ngoai ra callback giup viet code ngan gon, de bao tri
+	
