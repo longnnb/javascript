@@ -9,7 +9,7 @@ address = 'HN'
 
 // const
 const street = 35
-// street = 45 // error
+street = 45 // error
 
 // use *let* instead of *var* in for loop
 for (let i = 0; i < 10; i++) {

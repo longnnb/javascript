@@ -1,5 +1,5 @@
 1. callback
-- Doi voi HOF la function 
+- Doi voi Higher-Order Function (HOF) la function 
 	+ co the nhan vao parameter la 1 function #
 	+ co the return mot ham # hoac nhieu ham #
 * 1 ham duoc truyen vao ham # nhu 1 tham so (# so voi higer order function)

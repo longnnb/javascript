@@ -7,7 +7,7 @@ function myFunc() {
 
 // Function expression
 // Not ok with hoisting
-// myFuncVar(); // error, function variable was declared but was not initialized
+myFuncVar(); // error, function variable was declared but was not initialized
 var myFuncVar = function () {
     console.log('Function is running')
 }
@@ -80,7 +80,7 @@ function greeting(text, text2) {
     console.log(`${text} ${this.name}, ${text2}`);
 }
 greeting.apply(customer1, ['Hello', 'How are you?']); // output Hello Leo, How are you?
-greeting.apply(customer2, ['Hello', 'How are you?']); // output Hello Natm How are you?
+greeting.apply(customer2, ['Hello', 'How are you?']); // output Hello Nat, How are you?
 
 // Function.prototype.bind()
 // The Bind method returns a new function, allowing you to pass in a this array and any number of arguments. 

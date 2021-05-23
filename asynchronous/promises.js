@@ -53,6 +53,8 @@ function queryUserDetail(post) {
     })
 }
 
+// then(resolve callback)
+// catch(reject callback)
 // Promise chains >< callback
 findPostById(2)
     .then(post => queryUserDetail(post))
@@ -61,6 +63,7 @@ findPostById(2)
 
 
 // Promise.all
+// 2 promises => responses is array[2]
 const evolutionChainPromise = fetch(
     "http://pokeapi.co/api/v2/evolution-chain/?limit=200&offset=100"
 );

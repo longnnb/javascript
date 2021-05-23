@@ -1,4 +1,8 @@
 // Spread Operator ... vs ...rest operator
+// ...spread -> split array
+// ...rest -> join into array
+
+// Spread Operator ...
 const iphones = ["iphone4", "iphone5", "iphone6"];
 const macbooks = ["macbook2012", "macbook2013", "macbook2014"];
 
@@ -28,13 +32,9 @@ function sum() {
 const values = [69, 96, 1, 21, 1, 12, 3]
 console.log(sum(...values))
 
-
 // -- ...rest
 // 1. parameter of function 
 // 2. destructuring
-
-// ...spread -> split array
-// ...rest -> join into array
 
 function calculateGPA(math, literature, ...rest) {
     console.log(rest)
@@ -55,3 +55,27 @@ const VietNamTeam = [
 
 const [coach, captain, ...players] = VietNamTeam
 console.log(players)
+
+/* ================== */
+
+// can use for both object and array
+const person = {
+    name: 'Max',
+    age: 29,
+    greet() {
+        console.log('Hi, I am ' + this.name);
+    }
+};
+
+const copiedPerson = { ...person };
+console.log(copiedPerson);
+
+const hobbies = ['Sports', 'Cooking'];
+const copiedArray = [...hobbies];
+console.log(copiedArray);
+
+const toArray = (...args) => {
+    return args;
+};
+
+console.log(toArray(1, 2, 3, 4));
